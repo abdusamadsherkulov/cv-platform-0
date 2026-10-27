@@ -1,0 +1,41 @@
+import './index.css';
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar.jsx'
+import App from './App.jsx'
+import AuthCallback from './pages/AuthCallback.jsx'
+import Attributes from './pages/Attributes.jsx';
+import Positions from './pages/Positions.jsx';
+import CVDetail from './pages/CVDetail.jsx';
+import PositionDetail from './pages/PositionDetail.jsx';
+import CreatePosition from './pages/CreatePosition.jsx';
+import Projects from './pages/Projects.jsx';
+import Profile from './pages/Profile.jsx';
+import Users from './pages/Users.jsx';
+import AllCVs from './pages/AllCVs.jsx';
+import Login from './pages/Login.jsx';
+import './i18n.js';
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/auth/callback" element={<AuthCallback />} />
+        <Route path="/attributes" element={<Attributes />} />
+        <Route path="/positions" element={<Positions />} />
+        <Route path="/cvs/:id" element={<CVDetail />} />
+        <Route path="/positions/:id" element={<PositionDetail />} />
+        <Route path="/positions/new" element={<CreatePosition />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/all-cvs" element={<AllCVs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile/:userId" element={<Profile />} />
+      </Routes>
+    </BrowserRouter>
+  </StrictMode>,
+)
