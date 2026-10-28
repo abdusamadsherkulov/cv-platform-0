@@ -221,7 +221,7 @@ function Profile() {
   const availableToAdd = attributesList.filter((a) => !addedIds.includes(a.id));
 
   return (
-    <div className="page max-w-5xl">
+    <div className="page max-w-6xl">
       <ToastContainer toasts={toasts} />
       <PageHeader title={isOwnProfile ? t('profile.title') : displayName(meFields)} />
       <Alert>{error}</Alert>
