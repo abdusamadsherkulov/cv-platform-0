@@ -45,7 +45,7 @@ function App() {
 
         <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-panel border border-line bg-line lg:grid-cols-5">
           {stats.map(([value, label], i) => (
-            <div key={label} className={`bg-surface p-5 ${i === stats.length - 1 ? 'col-span-2 lg:col-span-1' : ''}`}>
+            <div key={label} className={`bg-surface p-5 text-center ${i === stats.length - 1 ? 'col-span-2 lg:col-span-1' : ''}`}>
               <p className="text-3xl font-semibold tabular-nums"><CountUp end={value} /></p>
               <p className="mt-1 text-sm text-muted">{label}</p>
             </div>

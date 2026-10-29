@@ -35,7 +35,7 @@ function Footer() {
                 </div>
 
                 <div className="flex flex-col items-center gap-1 border-t border-line py-6 text-center text-sm text-muted sm:flex-row sm:justify-center sm:gap-3">
-                    <p>© {new Date().getFullYear()} CV Platform. {t('footer.rights')}</p>
+                    <p>© {new Date().getFullYear()} CV Platform</p>
                     <span className="hidden sm:inline" aria-hidden="true">·</span>
                     <p>
                         {t('footer.builtBy')}{' '}
