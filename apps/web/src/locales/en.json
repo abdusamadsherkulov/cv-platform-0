@@ -183,5 +183,11 @@
   "theme": {
     "light": "Light",
     "dark": "Dark"
+  },
+  "footer": {
+    "tagline": "Build tailored CVs and find the right candidates for every position.",
+    "platform": "Platform",
+    "rights": "All rights reserved.",
+    "builtBy": "Built by"
   }
 }

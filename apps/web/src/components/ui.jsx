@@ -81,3 +81,14 @@ export function Period({ start, end, ongoing }) {
     </>
   );
 }
+
+export function Logo() {
+  return (
+    <span className="flex shrink-0 items-center gap-2.5 whitespace-nowrap font-semibold tracking-tight">
+      <span className="grid size-8 place-items-center rounded-[9px] bg-accent text-accent-ink" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 3h8l4 4v14H6z" /><path d="M9 12h6M9 16h6" /></svg>
+      </span>
+      CV Platform
+    </span>
+  );
+}

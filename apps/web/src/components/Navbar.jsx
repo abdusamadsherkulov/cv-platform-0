@@ -2,7 +2,7 @@ import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { apiFetch, getCurrentRole } from '../api';
-import { MenuIcon, XIcon, SearchIcon, SunIcon, MoonIcon } from './ui';
+import { MenuIcon, XIcon, SearchIcon, SunIcon, MoonIcon, Logo } from './ui';
 
 function SearchBox({ onNavigate }) {
   const { t } = useTranslation();
@@ -122,17 +122,15 @@ function Navbar() {
   ];
 
   const linkClass = ({ isActive }) =>
-    `rounded-control px-3 py-1.5 text-sm font-medium no-underline transition-colors ${
-      isActive ? 'bg-accent-soft text-accent' : 'text-muted hover:bg-soft hover:text-ink'
+    `rounded-control px-3 py-1.5 text-sm font-medium no-underline transition-colors ${isActive ? 'bg-accent-soft text-accent' : 'text-muted hover:bg-soft hover:text-ink'
     }`;
 
   const langBtn = (lang, label) => (
     <button
       key={lang}
       onClick={() => changeLanguage(lang)}
-      className={`px-2.5 py-1 text-xs font-medium transition-colors ${
-        i18n.language.startsWith(lang) ? 'bg-ink text-bg' : 'text-muted hover:text-ink'
-      }`}
+      className={`px-2.5 py-1 text-xs font-medium transition-colors ${i18n.language.startsWith(lang) ? 'bg-ink text-bg' : 'text-muted hover:text-ink'
+        }`}
     >
       {label}
     </button>
@@ -141,12 +139,7 @@ function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-surface/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-5 sm:px-8">
-        <Link to="/" className="mr-2 flex items-center gap-2.5 font-semibold tracking-tight text-ink no-underline">
-          <span className="grid size-8 place-items-center rounded-[9px] bg-accent text-accent-ink" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 3h8l4 4v14H6z" /><path d="M9 12h6M9 16h6" /></svg>
-          </span>
-          CV Platform
-        </Link>
+        <Link to="/" className="mr-2 text-ink no-underline"><Logo /></Link>
 
         <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main">
           {links.map((l) => <NavLink key={l.to} to={l.to} className={linkClass}>{l.label}</NavLink>)}
