@@ -1,8 +1,7 @@
 import express from 'express';
 import { requireAuth } from '../middleware/auth.js';
-import { PrismaClient } from '../generated/prisma/index.js';
+import { prisma } from '../prisma.js';
 
-const prisma = new PrismaClient();
 const router = express.Router();
 
 // get a fresh access token from Salesforce using Client Credentials Flow

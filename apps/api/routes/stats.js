@@ -1,11 +1,13 @@
 import express from 'express';
-import { PrismaClient } from '../generated/prisma/index.js';
+import { prisma } from '../prisma.js';
 
-const prisma = new PrismaClient();
 const router = express.Router();
 
+let cache = { data: null, at: 0 };
+const TTL = 60 * 1000;
 // public - no auth required, per spec (visible to non-logged-in users too)
 router.get('/', async (req, res) => {
+  if (cache.data && Date.now() - cache.at < TTL) return res.json(cache.data);
   const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
 
   const [
@@ -40,12 +42,14 @@ router.get('/', async (req, res) => {
   }
   const tagCloud = Object.entries(tagCounts).map(([tag, count]) => ({ tag, count }));
 
-  res.json({
+  const payload = {
     latestPositions,
     stats: { totalPositions, totalCandidates, totalRecruiters, totalCVs, recentCVs },
     popularPositions: positionsWithCvCounts,
     tagCloud,
-  });
+  };
+  cache = { data: payload, at: Date.now() };
+  res.json(payload);
 });
 
 export default router;

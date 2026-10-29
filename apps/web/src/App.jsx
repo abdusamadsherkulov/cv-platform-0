@@ -7,15 +7,23 @@ import { Loading, Alert } from './components/ui';
 const API_URL = 'https://cw-platform.onrender.com';
 
 function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('statsCache')); } catch { return null; }
+  });
   const [error, setError] = useState('');
   const { t } = useTranslation();
 
   useEffect(() => {
     fetch(`${API_URL}/stats`)
-      .then((res) => res.json())
-      .then(setData)
-      .catch(() => setError('Could not load stats'));
+      .then((res) => {
+        if (!res.ok) throw new Error('Request failed');
+        return res.json();
+      })
+      .then((fresh) => {
+        setData(fresh);
+        localStorage.setItem('statsCache', JSON.stringify(fresh));
+      })
+      .catch(() => { if (!data) setError('Could not load stats'); });
   }, []);
 
   if (error) return <div className="page"><Alert>{error}</Alert></div>;
