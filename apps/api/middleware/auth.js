@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { prisma } from '../prisma.js';
+import { prisma } from '../db.js';
 
 const userCache = new Map(); // userId -> { user, at }
 const USER_TTL = 30 * 1000;
